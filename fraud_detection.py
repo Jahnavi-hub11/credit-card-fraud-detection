@@ -13,7 +13,7 @@ from xgboost import XGBClassifier
 from sklearn.model_selection import train_test_split
 
 print("Loading dataset...")
-df = pd.read_csv("creditcard.csv", encoding='latin1')
+df = pd.read_csv(r"C:\Users\talur\OneDrive\Desktop\fraud-detection\creditcard.csv", encoding='latin1')
 
 print("Dataset loaded!")
 print(df.shape)
@@ -107,3 +107,10 @@ plt.title("ROC Curve")
 plt.xlabel("False Positive Rate")
 plt.ylabel("True Positive Rate")
 plt.show()
+
+import pickle
+pickle.dump(rf_model, open("model.pkl", "wb"))
+
+fraud_sample = df[df['Class'] == 1].iloc[0]
+print("Fraud sample:")
+print(fraud_sample)
